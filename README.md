@@ -10,29 +10,21 @@
 
 ```mermaid
 flowchart LR
-    %% 全局样式设置
-    Start([User Query]) ---|输入| Planner
+    Start([User Query]) --> Planner
 
     subgraph Harness["Harness Loop"]
-        direction LR
+        Planner["Planner"]
+        Executor["Executor"]
+        Reflector["Reflector"]
+        Reporter["Reporter"]
+
         Planner --> Executor
-        
-        %% 将自循环放在下方，避免干扰主线
-        Executor -- "Do subtask" --> Executor
-        
-        %% 强制 Reflector 和 Reporter 的相对位置
         Executor -->|"Finished"| Reflector
-        Reflector -.->|"needs_revision"| Executor
+        Reflector -->|"needs_revision"| Executor
         Reflector --> Reporter
     end
 
-    Reporter ---|输出| End([Final Answer])
-
-    %% 样式美化
-    style Harness fill:#f9f9f9,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5
-    style Start fill:#e1f5fe,stroke:#01579b
-    style End fill:#e1f5fe,stroke:#01579b
-    style Executor fill:#fff9c4,stroke:#fbc02d
+    Reporter --> End([Final Answer])
 ```
 
 **固定拓扑路由规则：**

@@ -1,6 +1,6 @@
-# Campus Agent
+# Multi-Agent Graph RAG
 
-基于 LangGraph 开发的校园智能问答 Multi-agent 系统，采用**硬编码工作流**架构，在 Plan-Execute-Reflect-Report 固定拓扑中集成 **GraphRAG** 三路混合检索能力。
+基于 LangGraph 开发的智能问答 Multi-agent 系统，采用**硬编码工作流**架构，在 Plan-Execute-Reflect-Report 固定拓扑中集成 **GraphRAG** 三路混合检索能力与 DeepResearch 深度思考探索能力。
 
 ## 架构
 
